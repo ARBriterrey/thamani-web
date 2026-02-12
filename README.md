@@ -61,13 +61,15 @@ thamani-web/
 
 ## 🚢 Deployment
 
-The project is configured for automated deployment to **GitHub Pages**.
+The project is configured for easy deployment to **GitHub Pages**.
 
-- **Push to `main` branch**: Triggers the GitHub Actions workflow.
-- **Build**: The workflow runs `npm run build`.
-- **Deploy**: The contents of `out/` are deployed to the `gh-pages` branch.
+-   **Development**: `npm run dev`
+-   **Production Build**: `npm run build`
+-   **Deploy**: `npm run deploy`
 
-See `DEPLOYMENT.md` for detailed deployment instructions.
+The deploy command automatically builds the project and pushes the `out/` folder to the `gh-pages` branch.
+
+See `DEPLOYMENT.md` for detailed instructions.
 
 ## 📄 License
 

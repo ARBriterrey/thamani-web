@@ -1,134 +1,58 @@
-# GitHub Pages Deployment Guide
+# Deployment Guide (Manual Branch Deployment)
 
-## Repository Setup Complete ✅
+## Overview
 
-The Thamani Healthcare website has been initialized and is ready for deployment to GitHub Pages.
+This project uses the `gh-pages` package to deploying the `out/` build folder directly to a `gh-pages` branch on GitHub. This allows you to build locally and push the static site to GitHub Pages without relying on GitHub Actions.
 
-### What's Been Done
+## Prerequisites
 
-1. ✅ Git repository initialized
-2. ✅ All files committed to `main` branch
-3. ✅ `gh-pages` branch created
-4. ✅ GitHub Actions workflow configured
-5. ✅ Next.js configured for static export
+1.  **Git Repository**: Ensure your project is initialized as a git repo (already done).
+2.  **GitHub Repository**: Create a new empty repository on GitHub named `thamani-web`.
+3.  **Remote Origin**: Link your local repo to GitHub.
 
----
+## Setup Remote
 
-## Next Steps: Push to GitHub
-
-### 1. Create GitHub Repository
-
-Go to [GitHub](https://github.com/new) and create a new repository named `thamani-web`.
-
-**Important**: Do **NOT** initialize with README, .gitignore, or license (we already have these).
-
-### 2. Add Remote and Push
+If you haven't already:
 
 ```bash
-cd /Users/andhan/Desktop/Sami/Thamani/thamani-web
-
-# Add your GitHub repository as remote
 git remote add origin https://github.com/YOUR_USERNAME/thamani-web.git
-
-# Push main branch
-git push -u origin main
-
-# Push gh-pages branch
-git push -u origin gh-pages
 ```
 
-Replace `YOUR_USERNAME` with your actual GitHub username.
+## How to Deploy
 
-### 3. Enable GitHub Pages
+The deployment process is automated with a single command:
 
-1. Go to your repository on GitHub
-2. Navigate to **Settings** → **Pages**
-3. Under "Build and deployment":
-   - Source: **GitHub Actions**
-4. The site will be automatically deployed on every push to `main`
-
----
-
-## Deployment Details
-
-### Automatic Deployment
-
-- **Trigger**: Push to `main` branch
-- **Build**: GitHub Actions runs `npm run build`
-- **Output**: Static files in `/out` directory
-- **Deploy**: Automatically published to GitHub Pages
-
-### Manual Deployment
-
-To trigger a manual deployment:
-1. Go to **Actions** tab in your GitHub repository
-2. Select "Deploy to GitHub Pages" workflow
-3. Click "Run workflow"
-
-### Site URL
-
-After deployment, your site will be available at:
-```
-https://YOUR_USERNAME.github.io/thamani-web/
+```bash
+npm run deploy
 ```
 
----
+### What this command does:
+1.  Run `npm run build` (generates static files in `out/`)
+2.  Using `gh-pages`, it pushes the contents of `out/` to the `gh-pages` branch on GitHub.
 
-## Configuration
+## First-Time Setup on GitHub
 
-### Base Path
+After running `npm run deploy` successfully for the first time:
 
-The site is configured with `basePath: '/thamani-web'` for GitHub Pages subdirectory deployment.
+1.  Go to your repository on **GitHub**.
+2.  Navigate to **Settings** -> **Pages**.
+3.  Under **Build and deployment**:
+    -   **Source**: Select **Deploy from a branch**.
+    -   **Branch**: Select `gh-pages` and folder `/ (root)`.
+4.  Click **Save**.
 
-If you want to use a custom domain or deploy to the root:
-1. Update `next.config.ts`: Remove or adjust `basePath`
-2. Add a `CNAME` file to `/public` with your custom domain
-3. Configure DNS settings as per [GitHub's custom domain guide](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
-
-### Static Export
-
-The site uses Next.js static export (`output: 'export'`) which:
-- Generates plain HTML/CSS/JS files
-- No server-side rendering at runtime
-- All pages pre-rendered at build time
-- Compatible with GitHub Pages hosting
-
----
+Your site will be live at `https://YOUR_USERNAME.github.io/thamani-web/`.
 
 ## Troubleshooting
 
-### Build Fails
-
-Check the Actions tab for build logs. Common issues:
-- Node version mismatch (workflow uses Node 20)
-- Missing dependencies (ensure `package-lock.json` is committed)
-- TypeScript errors (run `npm run build` locally first)
-
-### Assets Not Loading
-
-- Ensure `basePath` in `next.config.ts` matches your repository name
-- Check that asset paths use relative URLs
-- Verify files are in `/public` directory
-
-### 404 Errors
-
-- Confirm GitHub Pages source is set to "GitHub Actions"
-- Check that workflow completed successfully
-- Wait a few minutes for DNS propagation
-
----
-
-## Development
-
+### "Updates were rejected because the remote contains work that you do not have locally"
+If the `gh-pages` branch on GitHub gets out of sync, you can force-push or delete the remote branch:
 ```bash
-# Local development
-npm run dev
-
-# Build and test locally
-npm run build
-npx serve out
+git push origin --delete gh-pages
+npm run deploy
 ```
 
-## License
-
-© 2026 Thamani Healthcare. All rights reserved.
+### 404 Errors on Assets
+Ensure `next.config.ts` has the correct `basePath`.
+- If your repo is `username/thamani-web`, basePath should be `/thamani-web`.
+- If `username/username.github.io`, basePath should be empty `''`.
