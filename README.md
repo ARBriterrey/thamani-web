@@ -1,35 +1,74 @@
 # Thamani Healthcare Website
 
-Modern, responsive website built with Next.js 14, TypeScript, and Tailwind CSS, featuring advanced 3D animations and premium design.
+A modern, high-performance website for Thamani Healthcare, built with Next.js 14 and featuring advanced 3D visualizations. The site is optimized for speed, SEO, and accessibility.
 
-## Features
+## 🚀 Key Features
 
-- **Advanced 3D Animations**: Three.js cardiovascular network visualization
-- **Premium Design**: Red-themed, pulse-inspired UI with glassmorphism effects
-- **Fully Responsive**: Optimized for all devices and screen sizes
-- **Static Export**: Deployed to GitHub Pages
+- **Advanced 3D Animations**: Custom Three.js cardiovascular network visualization with heartbeat effects.
+- **Premium Design**: Red-themed "Pulse" UI with glassmorphism, smooth gradients, and Framer Motion animations.
+- **Responsive Layout**: Fully responsive design optimized for mobile, tablet, and desktop.
+- **SEO Optimized**: dynamic sitemap, robots.txt, JSON-LD structured data, and Open Graph tags.
+- **Performance**: Static HTML export for fast loading and GitHub Pages deployment.
 
-## Tech Stack
+## 🛠 Tech Stack
 
-- Next.js 14+ with App Router
-- TypeScript
-- Tailwind CSS 4
-- Framer Motion & Three.js
-- Formik + Yup validation
+- **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) & [Three.js](https://threejs.org/)
+- **Forms**: [Formik](https://formik.org/) + [Yup](https://github.com/jquense/yup)
+- **Icons**: [Lucide React](https://lucide.dev/)
 
-## Getting Started
+## 📂 Project Structure
 
-```bash
-npm install
-npm run dev
+```
+thamani-web/
+├── src/
+│   ├── app/              # Next.js App Router pages
+│   │   ├── about/        # About Us page
+│   │   ├── careers/      # Careers page
+│   │   ├── contact/      # Contact page & API
+│   │   ├── not-found.tsx # Custom 404 page
+│   │   └── ...           # Other pages
+│   ├── components/       # Reusable React components
+│   │   ├── forms/        # Form components with validation
+│   │   ├── layout/       # Header, Footer
+│   │   ├── three/        # Three.js animation wrappers
+│   │   └── ui/           # Base UI components (Button, Card, etc.)
+│   └── lib/              # Utilities and Three.js logic
+├── public/               # Static assets (images, logos)
+└── .github/workflows/    # CI/CD for GitHub Pages
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) to view the site.
+## 🚦 Getting Started
 
-## Deployment
+1.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-Automatically deployed to GitHub Pages via GitHub Actions on push to `main` branch.
+2.  **Run development server**:
+    ```bash
+    npm run dev
+    ```
+    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## License
+3.  **Build for production**:
+    ```bash
+    npm run build
+    ```
+    This generates static HTML files in the `out/` directory.
 
-© Thamani Healthcare
+## 🚢 Deployment
+
+The project is configured for automated deployment to **GitHub Pages**.
+
+- **Push to `main` branch**: Triggers the GitHub Actions workflow.
+- **Build**: The workflow runs `npm run build`.
+- **Deploy**: The contents of `out/` are deployed to the `gh-pages` branch.
+
+See `DEPLOYMENT.md` for detailed deployment instructions.
+
+## 📄 License
+
+© 2026 Thamani Healthcare. All rights reserved.
