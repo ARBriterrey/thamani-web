@@ -81,7 +81,7 @@ export default function ContactPage() {
                         {/* Google Maps Embed */}
                         <div className="w-full h-[300px] rounded-2xl overflow-hidden border border-navy-700 bg-navy-800 relative">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15575.46237748889!2d79.1325!3d12.9249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU1JzI5LjYiTiA3OcKwMDcnNTcuMCJF!5e0!3m2!1sen!2sin!4v1645000000000!5m2!1sen!2sin"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.750939529324!2d79.1329875!3d12.9237257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bad38e61fa68ffb%3A0xbede80351784979e!2sArni%20Rd%2C%20Thuthipattu%2C%20Tamil%20Nadu%20632011!5e0!3m2!1sen!2sin!4v1707765123456!5m2!1sen!2sin"
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0 }}

@@ -3,7 +3,7 @@
 import { Section } from "@/components/ui/Section";
 import { Card } from "@/components/ui/Card";
 import { motion } from "framer-motion";
-import { Database, Activity, Cpu, Factory } from "lucide-react";
+import { Database, Activity, Cpu, Factory, ShieldCheck } from "lucide-react";
 // import { Clock } from "lucide-react"; // Removed unused import
 
 export default function TechnologyPage() {
@@ -39,19 +39,64 @@ export default function TechnologyPage() {
                     <p className="text-gray-400">During a brief, non-invasive session, our device captures multiple cardiovascular parameters simultaneously.</p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-6">
+                <div className="relative max-w-4xl mx-auto">
+                    {/* Central Line */}
+                    <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-brand-red/50 to-transparent md:-translate-x-1/2" />
+
                     {[
-                        { label: "Blood Pressure", val: "Systolic & Diastolic" },
-                        { label: "Pulse Rate", val: "Continuous Monitoring" },
-                        { label: "ECG", val: "Lead II Rhythm" },
-                        { label: "SPO2", val: "Oxygen Saturation" },
-                        { label: "MAP", val: "Mean Arterial Pressure" },
-                        { label: "Pulse Pressure", val: "Arterial Stiffness Indicator" }
-                    ].map((item, index) => (
-                        <Card key={index} className="p-6 flex flex-col items-center justify-center text-center hover:bg-navy-800">
-                            <span className="text-2xl font-bold text-brand-red mb-1">{item.label}</span>
-                            <span className="text-gray-400">{item.val}</span>
-                        </Card>
+                        {
+                            time: "Minute 0-1",
+                            title: "Calibration & Baseline",
+                            desc: "System performs auto-calibration while patient settles. Baseline environmental data is recorded.",
+                            icon: Activity
+                        },
+                        {
+                            time: "Minute 1-3",
+                            title: "Hemodynamic Profiling",
+                            desc: "Continuous blood pressure wave analysis and arterial stiffness assessment begins.",
+                            icon: Database
+                        },
+                        {
+                            time: "Minute 3-5",
+                            title: "Autonomic Stress Test",
+                            desc: "Heart rate variability (HRV) and vascular response to controlled breathing are measured.",
+                            icon: Cpu
+                        },
+                        {
+                            time: "Minute 5-6",
+                            title: "Data Synthesis",
+                            desc: "All physiological parameters are synthesized by the AI algorithm to generate the risk score.",
+                            icon: ShieldCheck
+                        }
+                    ].map((step, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.2 }}
+                            className={`relative flex items-center gap-8 mb-12 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                                }`}
+                        >
+                            {/* Marker */}
+                            <div className="absolute left-[20px] md:left-1/2 w-4 h-4 bg-brand-red rounded-full shadow-[0_0_15px_rgba(196,30,58,0.8)] z-10 md:-translate-x-1/2 border-2 border-navy-900" />
+
+                            {/* Content Side */}
+                            <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'}`}>
+                                <Card className="p-6 hover:border-brand-red/30 transition-colors group">
+                                    <div className={`inline-flex p-3 rounded-lg bg-navy-800 text-brand-red mb-4 group-hover:scale-110 transition-transform ${index % 2 === 0 ? 'md:ml-auto' : ''
+                                        }`}>
+                                        <step.icon size={24} />
+                                    </div>
+                                    <div className="text-brand-red font-mono text-sm mb-2">{step.time}</div>
+                                    <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
+                                    <p className="text-gray-400 text-sm leading-relaxed">{step.desc}</p>
+                                </Card>
+                            </div>
+
+                            {/* Empty Side for Desktop Layout */}
+                            <div className="hidden md:block md:w-1/2" />
+                        </motion.div>
                     ))}
                 </div>
             </Section>
