@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, MapPin, Phone, Linkedin } from "lucide-react";
+import { getAssetPath } from "@/lib/utils";
 
 export function Footer() {
     const currentYear = new Date().getFullYear();
@@ -14,7 +15,7 @@ export function Footer() {
                         <Link href="/" className="flex items-center gap-2">
                             <div className="relative h-10 w-10 overflow-hidden rounded-full border border-navy-700">
                                 <Image
-                                    src="/logo.jpeg"
+                                    src={getAssetPath("/assets/thamani-logo.png")}
                                     alt="Thamani Healthcare Logo"
                                     fill
                                     className="object-cover"

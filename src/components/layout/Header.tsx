@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, getAssetPath } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 
 const navLinks = [
@@ -47,7 +47,7 @@ export function Header() {
                 <Link href="/" className="flex items-center gap-2 group">
                     <div className="relative h-10 w-10 md:h-12 md:w-12 overflow-hidden rounded-full border-2 border-brand-red/20 group-hover:border-brand-red transition-colors">
                         <Image
-                            src="/logo.jpeg"
+                            src={getAssetPath("/assets/thamani-logo.png")}
                             alt="Thamani Healthcare Logo"
                             fill
                             className="object-cover"

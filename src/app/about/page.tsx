@@ -61,12 +61,11 @@ export default function AboutPage() {
                     <h2 className="text-3xl font-bold font-heading mb-4">Board of Directors</h2>
                     <p className="text-gray-400">Guided by leaders in medicine, technology, and business.</p>
                 </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
                     {[
-                        { name: "Dr. B. Jeya Balaji", role: "Director", desc: "Visionary leader driving clinical innovation." },
-                        { name: "Mrs. J. Saranya", role: "Director", desc: "Expertise in operations and healthcare management." },
-                        { name: "Mr. B. Jeya Murugan", role: "Director", desc: "Strategic direction and business development." },
-                        { name: "Mr. C.S. Ramachandran", role: "Director", desc: "Financial stewardship and governance." }
+                        { name: "Ms. Bowya Baskaran", role: "Director", desc: "Visionary leadership in healthcare innovation." },
+                        { name: "Mr. Manokaran Kittuswamy", role: "Director", desc: "Driving technological advancements and research." },
+                        { name: "Mr. Janardhan Pillai", role: "Director", desc: "Expertise in strategic operations and growth." }
                     ].map((leader, index) => (
                         <Card key={index} className="p-6 text-center">
                             <div className="w-24 h-24 bg-navy-700 rounded-full mx-auto mb-4" />

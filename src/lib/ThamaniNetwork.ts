@@ -60,7 +60,7 @@ export class ThamaniNetwork {
         };
     }
 
-    init() {
+    init(width: number, height: number) {
         // Setup Scene
         this.scene = new THREE.Scene();
         // Add subtle fog for depth
@@ -69,11 +69,14 @@ export class ThamaniNetwork {
         // Setup Camera
         this.camera = new THREE.PerspectiveCamera(
             60,
-            (window.innerWidth - 320) / window.innerHeight,
+            width / height,
             0.1,
             1000
         );
-        this.camera.position.z = 12;
+
+        // Responsive camera positioning
+        const isPortrait = height > width;
+        this.camera.position.z = isPortrait ? 18 : 12;
         this.camera.position.y = 2;
         this.camera.lookAt(0, 0, 0);
 
@@ -103,7 +106,12 @@ export class ThamaniNetwork {
     private createCentralLogo() {
         // Load the Thamani logo
         const textureLoader = new THREE.TextureLoader();
-        const texture = textureLoader.load('/assets/thamani-logo.png');
+        // Adjust path for GitHub Pages deployment
+        const logoPath = process.env.NODE_ENV === 'production'
+            ? '/thamani-web/assets/thamani-logo.png'
+            : '/assets/thamani-logo.png';
+
+        const texture = textureLoader.load(logoPath);
         const material = new THREE.SpriteMaterial({
             map: texture,
             color: 0xffffff,
@@ -390,9 +398,13 @@ export class ThamaniNetwork {
         this.renderer.render(this.scene, this.camera);
     }
 
-    onResize() {
-        const sidebarWidth = window.innerWidth <= 768 ? 0 : 320;
-        this.camera.aspect = (window.innerWidth - sidebarWidth) / window.innerHeight;
+    onResize(width: number, height: number) {
+        this.camera.aspect = width / height;
+
+        // Adjust camera distance for mobile/portrait
+        const isPortrait = height > width;
+        this.camera.position.z = isPortrait ? 18 : 12;
+
         this.camera.updateProjectionMatrix();
     }
 

@@ -28,7 +28,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading mb-6 tracking-tight"
           >
-            Detecting What <span className="text-brand-red">Others Miss</span>
+            Redefining <span className="text-brand-red">Blood Pressure Assessment</span>
           </motion.h1>
 
           <motion.p
@@ -37,7 +37,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed"
           >
-            India&apos;s first device capable of detecting masked and white coat hypertension with clinical precision.
+            World&apos;s first device capable of detecting masked and white coat hypertension with clinical precision.
           </motion.p>
 
           <motion.div

@@ -29,7 +29,7 @@ export default function NetworkAnimation() {
 
         // Initialize animation
         const animation = new ThamaniNetwork(renderer);
-        animation.init();
+        animation.init(container.clientWidth, container.clientHeight);
         animationRef.current = animation;
 
         // Animation loop
@@ -48,7 +48,7 @@ export default function NetworkAnimation() {
             const height = container.clientHeight;
 
             renderer.setSize(width, height);
-            animation.onResize();
+            animation.onResize(width, height);
         };
         window.addEventListener('resize', handleResize);
 

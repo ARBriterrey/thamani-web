@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  metadataBase: new URL("https://thamanihealthcare.co.in"),
   openGraph: {
     title: "Thamani Healthcare | Precision Cardiovascular Diagnostics",
     description: "Pioneering masked and white coat hypertension detection with India's first normative cardiovascular database.",
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "Thamani Healthcare",
     images: [
       {
-        url: "/assets/thamani-logo.png", // We should ideally have a specific OG image, using logo for now
+        url: "/thamani-web/assets/thamani-logo.png",
         width: 800,
         height: 600,
         alt: "Thamani Healthcare Logo",
@@ -47,12 +48,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Thamani Healthcare",
     description: "Precision Cardiovascular Diagnostics",
-    images: ["/assets/thamani-logo.png"],
+    images: ["/thamani-web/assets/thamani-logo.png"],
   },
   icons: {
-    icon: "/assets/thamani-logo.png",
-    shortcut: "/assets/thamani-logo.png",
-    apple: "/assets/thamani-logo.png",
+    icon: "/thamani-web/assets/thamani-logo.png",
+    shortcut: "/thamani-web/assets/thamani-logo.png",
+    apple: "/thamani-web/assets/thamani-logo.png",
   },
 };
 
@@ -61,7 +62,7 @@ const jsonLd = {
   "@type": "MedicalOrganization",
   "name": "Thamani Healthcare",
   "url": "https://thamanihealthcare.co.in",
-  "logo": "https://thamanihealthcare.co.in/assets/thamani-logo.png",
+  "logo": "https://thamanihealthcare.co.in/thamani-web/assets/thamani-logo.png",
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+91-9486969559",
