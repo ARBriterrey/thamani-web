@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/thamani-web' : '',
+  basePath: process.env.GH_PAGES === 'true' ? '/thamani-web' : '',
 };
 
 export default nextConfig;
